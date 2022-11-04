@@ -34,7 +34,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "yarn test && react-scripts build",
-    "test": "react-scripts test --watchAll=false",
+    "test": "react-scripts test --watchAll=false --collectCoverage",
     "format": "prettier --write src/**/*.ts{,x}",
     "lint": "tsc --noEmit && eslint src/**/*.ts{,x}"
   },
