@@ -2,7 +2,7 @@ version: "3.6"
 
 services:
   shine-bright-like-a-react:
-    image: brkclw/shine-bright-like-a-react:1.0.0
+    image: mstrelczuk/shine-bright-like-a-react:1.0.0
     build:
       context: .
       dockerfile: Dockerfile
