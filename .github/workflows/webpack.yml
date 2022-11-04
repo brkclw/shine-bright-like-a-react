@@ -2,33 +2,26 @@ name: NodeJS with Webpack
 
 on:
   push:
-    branches: ["main"]
+    branches: ["main", "docker"]
   pull_request:
     branches: ["main"]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [18.x]
-
     steps:
       - uses: actions/checkout@v3
-
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-
       - name: Build
         run: |
           yarn install
           yarn build
-  docker:
-    runs-on: ubuntu-latest
-    steps:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
       - name: Set up Docker Buildx
@@ -41,5 +34,8 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
+          context: .
           push: true
-          tags: brkclw/shine-bright-like-a-react:1.0.0
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/shine-bright-like-a-react:1.0.0
+
+      
