@@ -1,26 +1,26 @@
 <h1 style="text-align: center;">Shine bright like a GitHub ⭐</h1>
 
-## Available Scripts
+## 🐕 Build Setup
 
-Before all run:
+```bash
+# install dependencies
+yarn install
 
-#### `yarn install`
+# build
+yarn build
 
-In the project directory, you can run:
+# serve at localhost:3000
+yarn start
 
-### Start
+# run tests
+yarn test
 
-#### `yarn start`
+# lint
+yarn lint
 
-### Build
-
-#### `yarn build`
-
-### Test
-
-### `yarn test`
-
----
+# format
+yarn format
+```
 
 ## 😃 Features:
 
