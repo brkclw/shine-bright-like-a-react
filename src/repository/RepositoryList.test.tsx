@@ -2,6 +2,7 @@ import { render, screen, waitFor, within } from "@testing-library/react";
 import RepositoryList from "./RepositoryList";
 import { MockedProvider, MockedResponse } from "@apollo/client/testing";
 import { GET_REPOSITORIES } from "../graphql/queries/repository/repository.query";
+import { renderWithWrapper } from "../config/jest";
 
 const repositoryListMocks: ReadonlyArray<MockedResponse> = [
   {
@@ -39,7 +40,7 @@ const repositoryListMocks: ReadonlyArray<MockedResponse> = [
 
 describe("Repository List", () => {
   const renderRepositoryList = () =>
-    render(
+    renderWithWrapper(
       <MockedProvider mocks={repositoryListMocks}>
         <RepositoryList />
       </MockedProvider>
