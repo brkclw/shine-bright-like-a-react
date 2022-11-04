@@ -2,8 +2,9 @@ import { Table } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import {
   Repository,
-  useRepositoriesQuery
+  useRepositoriesQuery,
 } from "../graphql/queries/repository/repository.query";
+import { StyledLink } from "./RepositoryList.styled";
 
 const columns: ColumnsType<Repository> = [
   {
@@ -14,9 +15,9 @@ const columns: ColumnsType<Repository> = [
     width: 200,
     render: (_, { name, url }) => {
       return (
-        <a href={url} target="_blank" rel="noreferrer">
+        <StyledLink href={url} target="_blank" rel="noreferrer">
           {name}
-        </a>
+        </StyledLink>
       );
     },
   },
