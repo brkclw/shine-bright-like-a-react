@@ -1,8 +1,10 @@
+/** Global CSS styles */
+import "antd/dist/antd.min.css";
+
 import { ApolloProvider } from "@apollo/client";
 import RepositoryList from "./repository/RepositoryList";
 import { createApolloClient } from "./config/apollo";
-import "antd/dist/antd.min.css";
-import { Layout } from "./layout/Layout";
+import { Layout } from "./layout";
 
 const App = () => {
   const client = createApolloClient();
