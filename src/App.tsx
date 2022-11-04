@@ -5,15 +5,19 @@ import { ApolloProvider } from "@apollo/client";
 import RepositoryList from "./repository/RepositoryList";
 import { createApolloClient } from "./config/apollo";
 import { Layout } from "./layout";
+import { ThemeProvider } from "styled-components";
+import { defaultTheme } from "./theme/theme";
 
 const App = () => {
   const client = createApolloClient();
 
   return (
     <ApolloProvider client={client}>
-      <Layout>
-        <RepositoryList />
-      </Layout>
+      <ThemeProvider theme={defaultTheme}>
+        <Layout>
+          <RepositoryList />
+        </Layout>
+      </ThemeProvider>
     </ApolloProvider>
   );
 };
