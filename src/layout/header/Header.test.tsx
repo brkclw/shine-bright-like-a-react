@@ -1,9 +1,9 @@
-import React from "react";
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import { Header } from "./Header";
+import { renderWithWrapper } from "../../config/jest";
 
 test("renders header", () => {
-  render(<Header />);
+  renderWithWrapper(<Header />);
   const headerSlogan = screen.getByText("👑 shine bright like a react 👑");
   expect(headerSlogan).toBeInTheDocument();
 });
