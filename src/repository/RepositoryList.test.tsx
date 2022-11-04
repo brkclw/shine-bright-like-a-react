@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor, within } from "@testing-library/react";
 import RepositoryList from "./RepositoryList";
 import { MockedProvider, MockedResponse } from "@apollo/client/testing";
 import { GET_REPOSITORIES } from "../graphql/queries/repository/repository.query";
@@ -37,16 +37,26 @@ const repositoryListMocks: ReadonlyArray<MockedResponse> = [
   },
 ];
 
-test("renders repository list", async () => {
-  render(
-    <MockedProvider mocks={repositoryListMocks}>
-      <RepositoryList />
-    </MockedProvider>
-  );
-  await waitFor(() => {
-    expect(screen.getByText("first project")).toBeInTheDocument();
-  });
-  await waitFor(() => {
+describe("Repository List", () => {
+  const renderRepositoryList = () =>
+    render(
+      <MockedProvider mocks={repositoryListMocks}>
+        <RepositoryList />
+      </MockedProvider>
+    );
+
+  it("renders repository list and items in table are visible", async () => {
+    renderRepositoryList();
+    await screen.findByText("first project");
     expect(screen.getByText("second project")).toBeInTheDocument();
+  });
+
+  it("repository list item have proper href", async () => {
+    renderRepositoryList();
+    await screen.findByText("first project");
+    expect(screen.getByText("second project")).toBeInTheDocument();
+
+    const link = screen.getByRole("link", { name: "first project" });
+    expect(link.getAttribute("href")).toBe("url123");
   });
 });
