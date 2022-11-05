@@ -28,10 +28,11 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "yarn test && react-scripts build",
+    "build": "yarn typescript-check && yarn test && react-scripts build",
+    "typescript-check": "tsc --noEmit",
     "test": "react-scripts test --watchAll=false --collectCoverage",
     "format": "prettier --write src/**/*.ts{,x}",
-    "lint": "tsc --noEmit && eslint src/**/*.ts{,x}"
+    "lint": "typescript-check && eslint src/**/*.ts{,x}"
   },
   "eslintConfig": {
     "extends": [
@@ -56,7 +57,8 @@
       "src/**/*.{ts,tsx}",
       "!<rootDir>/node_modules/",
       "!src/index.tsx",
-      "!src/components/App.tsx"
+      "!src/components/App.tsx",
+      "!src/config/apollo.ts"
     ]
   }
 }
