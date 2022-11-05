@@ -1,4 +1,4 @@
-## <h1 style="text-align: center;">Shine bright like a GitHub ⭐</h1>
+## <h1 align="center">Shine bright like a GitHub ⭐</h1>
 
 ## 😃 Features:
 
@@ -6,7 +6,7 @@
 - Sort by each column.
 - Open each repository in new tab.
 - Set pagination size.
----
+
 ## 🐕 Build Setup
 
 ```bash
@@ -29,8 +29,6 @@ yarn lint
 yarn format
 ```
 
----
-
 ## 🐳 Docker - localhost
 
 0. Run all commands from the project's root directory.
@@ -39,13 +37,9 @@ yarn format
 3. Open your browser and go to localhost:3000
 4. Run `docker-compose down` to stop container.
 
----
-
 ## 🐱 GitHub Actions + 🐳 Docker Hub
 
 - GitHub Actions are used in the CI/CD process to create Docker images from Dockerfiles, which are then pushed to my personal [Docker Hub](https://hub.docker.com/repository/docker/mstrelczuk/shine-bright-like-a-react).
-
----
 
 ## 🛠️ ToDo:
 
@@ -57,5 +51,3 @@ yarn format
 - Set version in dockerfile from CI/CD env.
 - Allow user to filter records.
 - Create input for github token and use this token for gql queries.
-
----
