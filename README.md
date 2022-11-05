@@ -51,3 +51,4 @@ yarn format
 - Set version in dockerfile from CI/CD env.
 - Allow user to filter records.
 - Create input for github token and use this token for gql queries.
+- Add Husky precommit hook for lint and format.
