@@ -27,8 +27,15 @@ export const columns: ColumnsType<Repository> = [
     sorter: (a, b) => numericSorter(a.stargazerCount, b.stargazerCount),
     sortDirections: ["descend", "ascend"],
     width: 100,
-    render: (_, { stargazerCount }) => {
-      return <>🌟 {stargazerCount}</>;
+    render: (_, { name, stargazerCount }) => {
+      return (
+        <span
+          key={`${name}-${stargazerCount}`}
+          data-testid={`row-${name}-stargazerCount`}
+        >
+          🌟 {stargazerCount}
+        </span>
+      );
     },
   },
   {

@@ -39,6 +39,7 @@ const repositoryListMocks: ReadonlyArray<MockedResponse> = [
     },
   },
 ];
+
 const renderRepositoryList = () =>
   renderWithWrapper(
     <MockedProvider mocks={repositoryListMocks}>
@@ -67,6 +68,12 @@ describe("Repository List", () => {
     await screen.findByText("redwood");
     const link = screen.getByRole("link", { name: "redwood" });
     expect(link.getAttribute("target")).toBe("_blank");
+  });
+
+  it("repository list item link should have star count with emoji at the beginning", async () => {
+    renderRepositoryList();
+    const row = await screen.findByTestId("row-redwood-stargazerCount");
+    expect(row.innerHTML).toBe("🌟 15100");
   });
 
   it("repository list item link should have proper style", async () => {
