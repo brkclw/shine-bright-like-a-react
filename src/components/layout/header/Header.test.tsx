@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
 import { Header } from "./Header";
-import { renderWithWrapper } from "../../config/jest";
+import { renderWithWrapper } from "../../../config/jest";
 
 test("renders header", () => {
   renderWithWrapper(<Header />);

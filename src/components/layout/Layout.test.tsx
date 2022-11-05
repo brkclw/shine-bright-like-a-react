@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
 import { Layout } from "./Layout";
-import { renderWithWrapper } from "../config/jest";
+import { renderWithWrapper } from "../../config/jest";
 
 test("renders layout", () => {
   renderWithWrapper(

@@ -3,7 +3,7 @@ import type { ColumnsType } from "antd/es/table";
 import {
   Repository,
   useRepositoriesQuery,
-} from "../graphql/queries/repository/repository.query";
+} from "../../graphql/queries/repository/repository.query";
 import { StyledLink } from "./RepositoryList.styled";
 
 const columns: ColumnsType<Repository> = [
