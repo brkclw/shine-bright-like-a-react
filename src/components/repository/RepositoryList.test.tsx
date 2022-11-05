@@ -2,6 +2,8 @@ import { MockedProvider, MockedResponse } from "@apollo/client/testing";
 import { screen } from "@testing-library/react";
 import { renderWithWrapper } from "../../config/jest";
 import { GET_REPOSITORIES } from "../../graphql/queries/repository/repository.query";
+import { defaultTheme } from "../../theme";
+import { numericSorter, textSorter } from "./columns";
 import RepositoryList from "./RepositoryList";
 
 const repositoryListMocks: ReadonlyArray<MockedResponse> = [
@@ -17,19 +19,19 @@ const repositoryListMocks: ReadonlyArray<MockedResponse> = [
           nodes: [
             {
               __typename: "Repository",
-              name: "first project",
+              name: "redwood",
               description: "desc",
-              forkCount: 1,
-              stargazerCount: 2,
-              url: "url123",
+              forkCount: 813,
+              stargazerCount: 15100,
+              url: "https://github.com/redwoodjs/redwood",
             },
             {
               __typename: "Repository",
-              name: "second project",
+              name: "sweetalert2",
               description: "desc",
-              forkCount: 1,
-              stargazerCount: 2,
-              url: "url12334",
+              forkCount: 1500,
+              stargazerCount: 15200,
+              url: "https://github.com/sweetalert2/sweetalert2",
             },
           ],
         },
@@ -37,27 +39,55 @@ const repositoryListMocks: ReadonlyArray<MockedResponse> = [
     },
   },
 ];
+const renderRepositoryList = () =>
+  renderWithWrapper(
+    <MockedProvider mocks={repositoryListMocks}>
+      <RepositoryList />
+    </MockedProvider>
+  );
 
 describe("Repository List", () => {
-  const renderRepositoryList = () =>
-    renderWithWrapper(
-      <MockedProvider mocks={repositoryListMocks}>
-        <RepositoryList />
-      </MockedProvider>
-    );
-
   it("renders repository list and items in table are visible", async () => {
     renderRepositoryList();
-    await screen.findByText("first project");
-    expect(screen.getByText("second project")).toBeInTheDocument();
+    await screen.findByText("redwood");
+    expect(screen.getByText("sweetalert2")).toBeInTheDocument();
   });
 
-  it("repository list item have proper href", async () => {
+  it("repository list item link should have proper href", async () => {
     renderRepositoryList();
-    await screen.findByText("first project");
-    expect(screen.getByText("second project")).toBeInTheDocument();
+    await screen.findByText("redwood");
+    const link = screen.getByRole("link", { name: "redwood" });
+    expect(link.getAttribute("href")).toBe(
+      "https://github.com/redwoodjs/redwood"
+    );
+  });
 
-    const link = screen.getByRole("link", { name: "first project" });
-    expect(link.getAttribute("href")).toBe("url123");
+  it("repository list item link should have target: _blank property to properly open page in new tab", async () => {
+    renderRepositoryList();
+    await screen.findByText("redwood");
+    const link = screen.getByRole("link", { name: "redwood" });
+    expect(link.getAttribute("target")).toBe("_blank");
+  });
+
+  it("repository list item link should have proper style", async () => {
+    renderRepositoryList();
+    await screen.findByText("redwood");
+    const link = screen.getByRole("link", { name: "redwood" });
+    expect(link).toHaveStyle(`color: ${defaultTheme.palette.secondary.main}`);
+  });
+});
+
+describe("Table handlers", () => {
+  it("should sort properly text values", async () => {
+    renderRepositoryList();
+    const names = ["redwood", "sweetalert2", "nx"];
+    const expectedResult = ["nx", "redwood", "sweetalert2"];
+    expect(expectedResult).toStrictEqual(names.sort(textSorter));
+  });
+
+  it("should sort properly numeric values", async () => {
+    const values = [14826, 1104, 0, 10, 1005];
+    const expectedResult = [0, 10, 1005, 1104, 14826];
+    expect(expectedResult).toStrictEqual(values.sort(numericSorter));
   });
 });
