@@ -1,8 +1,8 @@
-import { render, screen, waitFor, within } from "@testing-library/react";
-import RepositoryList from "./RepositoryList";
 import { MockedProvider, MockedResponse } from "@apollo/client/testing";
-import { GET_REPOSITORIES } from "../graphql/queries/repository/repository.query";
-import { renderWithWrapper } from "../config/jest";
+import { screen } from "@testing-library/react";
+import { renderWithWrapper } from "../../config/jest";
+import { GET_REPOSITORIES } from "../../graphql/queries/repository/repository.query";
+import RepositoryList from "./RepositoryList";
 
 const repositoryListMocks: ReadonlyArray<MockedResponse> = [
   {

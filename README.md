@@ -30,6 +30,7 @@ coming soon...
 
 ## 🛠️ ToDo:
 
+- **all secrets should be retrived from API after succesful authentication** 
 - configure TypeScript path aliases
 - use `@graphql-codegen` to generate TS types from gql schema
 - use `topic` query instead of `search` (GitHub API is not working - created ticket for this).
