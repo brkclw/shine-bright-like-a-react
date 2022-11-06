@@ -9,7 +9,10 @@
 
 ## 🐕 Build Setup
 
+**Do not forget to provide GitHub token and GraphQL API url to specific .env file**
+
 ```bash
+
 # install dependencies
 yarn install
 
@@ -55,4 +58,3 @@ yarn typescript-check
 - Allow user to filter records.
 - Create input for github token and use this token for gql queries.
 - Add `Husky` precommit hook for lint and format.
-- Run `tsc` before build
