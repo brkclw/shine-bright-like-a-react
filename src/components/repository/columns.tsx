@@ -1,5 +1,5 @@
 import { ColumnsType } from "antd/es/table";
-import { Repository } from "../../graphql/queries/repository/repository.query";
+import { Repository } from "../../graphql-types";
 import { StyledLink } from "./RepositoryList.styled";
 
 export const textSorter = (a: string, b: string) => a.localeCompare(b);
