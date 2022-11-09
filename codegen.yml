@@ -1,0 +1,16 @@
+overwrite: true
+# schema URL should be taken from env variable, further configuration of cra/dotenv is needed
+schema: https://docs.github.com/public/schema.docs.graphql
+documents: 'src/**/*.{ts,tsx}'
+generates:
+  src/graphql-types.ts:
+    plugins:
+      - 'typescript'
+      - 'typescript-operations'
+      - 'typescript-react-apollo'
+    config:
+      namingConvention:
+        transformUnderscore: true
+      withHooks: true
+      withHOC: false
+      withComponent: false

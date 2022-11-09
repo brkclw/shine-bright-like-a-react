@@ -1,10 +1,13 @@
 import { Table } from "antd";
-import { useRepositoriesQuery } from "../../graphql/queries/repository/repository.query";
+import { useGetRepositoriesQuery } from "../../graphql-types";
+import { isRepository } from "../../utils/guards";
 import { columns } from "./columns";
 
 const RepositoryList: React.FC = () => {
-  const { data, loading } = useRepositoriesQuery();
-  const repositories = data ? data.search.nodes : [];
+  const { data, loading } = useGetRepositoriesQuery({
+    variables: { first: 100 },
+  });
+  const repositories = data?.search?.nodes?.filter(isRepository) || [];
 
   return (
     <Table
