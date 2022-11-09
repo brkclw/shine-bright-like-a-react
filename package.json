@@ -22,17 +22,21 @@
     "@types/styled-components": "5.1.26",
     "@typescript-eslint/eslint-plugin": "5.42.0",
     "@typescript-eslint/parser": "5.42.0",
+    "@graphql-codegen/cli": "2.13.11",
+    "@graphql-codegen/typescript-operations": "2.5.6",
+    "@graphql-codegen/typescript-react-apollo": "3.3.6",
     "eslint": "8.26.0",
     "eslint-config-react-app": "7.0.1",
     "prettier": "2.7.1"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "yarn typescript-check && yarn test && react-scripts build",
+    "build": "yarn graphql-codegen && yarn typescript-check && yarn test && react-scripts build",
     "typescript-check": "tsc --noEmit",
     "test": "react-scripts test --watchAll=false --collectCoverage",
     "format": "prettier --write src/**/*.ts{,x}",
-    "lint": "yarn typescript-check && eslint src/**/*.ts{,x}"
+    "lint": "yarn typescript-check && eslint src/**/*.ts{,x}",
+    "codegen:generate": "yarn graphql-codegen"
   },
   "eslintConfig": {
     "extends": [
