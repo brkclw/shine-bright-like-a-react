@@ -32,7 +32,7 @@
     "typescript-check": "tsc --noEmit",
     "test": "react-scripts test --watchAll=false --collectCoverage",
     "format": "prettier --write src/**/*.ts{,x}",
-    "lint": "typescript-check && eslint src/**/*.ts{,x}"
+    "lint": "yarn typescript-check && eslint src/**/*.ts{,x}"
   },
   "eslintConfig": {
     "extends": [
