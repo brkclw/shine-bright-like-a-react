@@ -10,12 +10,22 @@ const repositoryListMocks: ReadonlyArray<MockedResponse> = [
   {
     request: {
       query: GET_REPOSITORIES,
+      variables: {
+        first: 100,
+      },
     },
+
     result: {
       data: {
         search: {
           __typename: "SearchResultItemConnection",
           repositoryCount: 2,
+          pageInfo: {
+            endCursor: "Y3Vyc29yOjEw",
+            hasNextPage: true,
+            startCursor: "Y3Vyc29yOjE=",
+            hasPreviousPage: false,
+          },
           nodes: [
             {
               __typename: "Repository",
