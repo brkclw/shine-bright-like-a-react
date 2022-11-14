@@ -31,6 +31,7 @@ export const Search: React.FC<SearchProps> = ({ repositories, onSearch }) => {
       <StyledForm layout="inline">
         <Tag color="blue">topic: react</Tag>
         <AutoComplete
+          data-testid={"search-component"}
           allowClear
           onClear={handleOnClear}
           options={repositories.map(({ name }) => ({

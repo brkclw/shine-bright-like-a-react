@@ -71,40 +71,38 @@ const renderRepositoryList = () =>
   );
 
 describe("Repository List", () => {
-  describe("rows", () => {
-    it("renders repository list and items in table are visible", async () => {
-      renderRepositoryList();
-      await screen.findByText("sweetalert2");
-      expect(screen.getByText("sweetalert2")).toBeInTheDocument();
-    });
+  it("renders repository list and items in table are visible", async () => {
+    renderRepositoryList();
+    await screen.findByText("sweetalert2");
+    expect(screen.getByText("sweetalert2")).toBeInTheDocument();
+  });
 
-    it("repository list item link should have proper href", async () => {
-      renderRepositoryList();
-      await screen.findByText("redwood");
-      const link = screen.getByRole("link", { name: "redwood" });
-      expect(link.getAttribute("href")).toBe(
-        "https://github.com/redwoodjs/redwood"
-      );
-    });
+  it("repository list item link should have proper href", async () => {
+    renderRepositoryList();
+    await screen.findByText("redwood");
+    const link = screen.getByRole("link", { name: "redwood" });
+    expect(link.getAttribute("href")).toBe(
+      "https://github.com/redwoodjs/redwood"
+    );
+  });
 
-    it("repository list item link should have target: _blank property to properly open page in new tab", async () => {
-      renderRepositoryList();
-      await screen.findByText("redwood");
-      const link = screen.getByRole("link", { name: "redwood" });
-      expect(link.getAttribute("target")).toBe("_blank");
-    });
+  it("repository list item link should have target: _blank property to properly open page in new tab", async () => {
+    renderRepositoryList();
+    await screen.findByText("redwood");
+    const link = screen.getByRole("link", { name: "redwood" });
+    expect(link.getAttribute("target")).toBe("_blank");
+  });
 
-    it("repository list item link should have star count with emoji at the beginning", async () => {
-      renderRepositoryList();
-      const row = await screen.findByTestId("row-redwood-stargazerCount");
-      expect(row.innerHTML).toBe("🌟 15100");
-    });
+  it("repository list item link should have star count with emoji at the beginning", async () => {
+    renderRepositoryList();
+    const row = await screen.findByTestId("row-redwood-stargazerCount");
+    expect(row.innerHTML).toBe("🌟 15100");
+  });
 
-    it("repository list item link should have proper style", async () => {
-      renderRepositoryList();
-      await screen.findByText("redwood");
-      const link = screen.getByRole("link", { name: "redwood" });
-      expect(link).toHaveStyle(`color: ${defaultTheme.palette.secondary.main}`);
-    });
+  it("repository list item link should have proper style", async () => {
+    renderRepositoryList();
+    await screen.findByText("redwood");
+    const link = screen.getByRole("link", { name: "redwood" });
+    expect(link).toHaveStyle(`color: ${defaultTheme.palette.secondary.main}`);
   });
 });
