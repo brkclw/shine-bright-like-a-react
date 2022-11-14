@@ -23,7 +23,6 @@ describe("tst", () => {
     expect(query).toEqual(expectedResult);
   });
 
-  
   it("with custom query", async () => {
     const query = new QueryBuilder()
       .withSearch("some nice query")

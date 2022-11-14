@@ -10,10 +10,9 @@ import { SearchProps } from "./Search.types";
  */
 export const Search: React.FC<SearchProps> = ({ repositories, onSearch }) => {
   const handleOnSelect = (value: string) => {
-    if (!value) {
-      return;
+    if (value) {
+      onSearch(value);
     }
-    onSearch(value);
   };
 
   const handleOnSearch = (value: string) => {
