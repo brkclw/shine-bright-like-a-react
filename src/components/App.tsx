@@ -15,7 +15,7 @@ const App = () => {
     <ApolloProvider client={client}>
       <ThemeProvider theme={defaultTheme}>
         <Layout>
-            <RepositoryList />
+          <RepositoryList />
         </Layout>
       </ThemeProvider>
     </ApolloProvider>
