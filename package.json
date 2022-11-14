@@ -30,7 +30,7 @@
     "prettier": "2.7.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "yarn codegen:generate && react-scripts start",
     "build": "yarn graphql-codegen && yarn typescript-check && yarn test && react-scripts build",
     "typescript-check": "tsc --noEmit",
     "test": "react-scripts test --watchAll=false --collectCoverage",
