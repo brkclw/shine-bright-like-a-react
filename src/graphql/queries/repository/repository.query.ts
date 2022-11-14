@@ -1,9 +1,14 @@
 import { gql } from "@apollo/client";
 
 export const GET_REPOSITORIES = gql`
-  query GET_REPOSITORIES($first: Int!, $before: String, $after: String) {
+  query GET_REPOSITORIES(
+    $query: String!
+    $first: Int!
+    $before: String
+    $after: String
+  ) {
     search(
-      query: "topic:react stars:>1000"
+      query: $query
       type: REPOSITORY
       first: $first
       before: $before
@@ -11,19 +16,21 @@ export const GET_REPOSITORIES = gql`
     ) {
       __typename
       repositoryCount
-      pageInfo {
-        hasNextPage
-        hasPreviousPage
-        endCursor
-        startCursor
-      }
-      nodes {
-        ... on Repository {
-          __typename
-          name
-          forkCount
-          stargazerCount
-          url
+      edges {
+        __typename
+        cursor
+        node {
+          ... on Repository {
+            __typename
+            id
+            name
+            forkCount
+            owner {
+              login
+            }
+            stargazerCount
+            url
+          }
         }
       }
     }
