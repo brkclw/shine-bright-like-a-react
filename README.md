@@ -2,10 +2,11 @@
 
 ## 😃 Features:
 
-- List 100 repositories with over 1000 stars from React topic.
+- List repositories with over 1000 stars from React topic.
 - Sort by each column.
 - Open each repository in new tab.
 - Set pagination size.
+- Search for your favorite project
 
 ## 🐕 Build Setup
 
@@ -51,10 +52,6 @@ yarn typescript-check
 
 - **All secrets should be retrived from API after succesful authentication**
 - Configure TypeScript path aliases.
-- Use `@graphql-codegen` to generate TS types from gql schema.
-- Use `topic` query instead of `search` (GitHub API is not working - created ticket for this).
-  - `search` does not support pagination.
 - Set version in dockerfile from CI/CD env.
-- Allow user to filter records.
 - Create input for github token and use this token for gql queries.
 - Add `Husky` precommit hook for lint and format.

@@ -2,17 +2,13 @@ import { ColumnsType } from "antd/es/table";
 import { Repository } from "../../graphql-types";
 import { StyledLink } from "./RepositoryList.styled";
 
-export const textSorter = (a: string, b: string) => a.localeCompare(b);
-
-export const numericSorter = (a: number, b: number) => a - b;
-
 export const columns: ColumnsType<Repository> = [
   {
     title: "Name",
     dataIndex: "name",
-    sorter: (a, b) => textSorter(a.name, b.name),
+    sorter: true,
     sortDirections: ["descend", "ascend"],
-    width: 200,
+    width: "30%",
     render: (_, { name, url }) => {
       return (
         <StyledLink href={url} target="_blank" rel="noreferrer">
@@ -22,11 +18,19 @@ export const columns: ColumnsType<Repository> = [
     },
   },
   {
+    title: "Owner",
+    dataIndex: "owner.login",
+    width: "30%",
+    render: (_, { owner }) => {
+      return owner.login;
+    },
+  },
+  {
     title: "Stars",
     dataIndex: "stargazerCount",
-    sorter: (a, b) => numericSorter(a.stargazerCount, b.stargazerCount),
+    width: "20%",
+    sorter: true,
     sortDirections: ["descend", "ascend"],
-    width: 100,
     render: (_, { name, stargazerCount }) => {
       return (
         <span
@@ -41,9 +45,9 @@ export const columns: ColumnsType<Repository> = [
   {
     title: "Forks",
     dataIndex: "forkCount",
-    sorter: (a, b) => numericSorter(a.forkCount, b.forkCount),
+    width: "20%",
+    sorter: true,
     sortDirections: ["descend", "ascend"],
-    width: 100,
     render: (_, { forkCount }) => {
       return <>🍴 {forkCount}</>;
     },
