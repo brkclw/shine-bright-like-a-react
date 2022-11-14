@@ -2,10 +2,6 @@ import { ColumnsType } from "antd/es/table";
 import { Repository } from "../../graphql-types";
 import { StyledLink } from "./RepositoryList.styled";
 
-export const textSorter = (a: string, b: string) => a.localeCompare(b);
-
-export const numericSorter = (a: number, b: number) => a - b;
-
 export const columns: ColumnsType<Repository> = [
   {
     title: "Name",
@@ -25,12 +21,8 @@ export const columns: ColumnsType<Repository> = [
     title: "Owner",
     dataIndex: "owner.login",
     width: "30%",
-    render: (_, { owner, url }) => {
-      return (
-        <StyledLink href={url} target="_blank" rel="noreferrer">
-          {owner.login}
-        </StyledLink>
-      );
+    render: (_, { owner }) => {
+      return owner.login;
     },
   },
   {

@@ -1,7 +1,7 @@
 import { Repository } from "./../graphql-types";
 import { SorterResult } from "antd/lib/table/interface";
 
-export class Query {
+class Query {
   public search!: string;
   public limiter!: string;
   public sort!: string;

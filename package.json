@@ -62,7 +62,8 @@
       "!<rootDir>/node_modules/",
       "!src/index.tsx",
       "!src/components/App.tsx",
-      "!src/config/apollo.ts"
+      "!src/config/apollo.ts",
+      "!src/graphql-types.ts"
     ]
   }
 }
